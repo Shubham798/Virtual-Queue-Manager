@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    main{
+        background: -webkit-gradient(linear, left top, right bottom, from(#c8c897), to(#6590A2));
+            background: linear-gradient(to bottom right, #c8c897, #6590A2);
+    }
+
+    #cards .card {
+        border-radius: 20px;
+        min-height: 100%;
+    }
+
+    #cards .heading-border {
+        position: absolute;
+        width: 100%;
+        top: 60%;
+    }
+
+    #cards .card .user-picture img {
+        position: absolute;
+        top: -20%;
+        right: 10%;
+        background: #f8f9fa !important;
+        padding: 10px;
+    }
+
+    #cards .card .user-content .user-name {
+        margin-right: 150px;
+    }
+</style>
+
+<div class="bg-light">
+    <main>
+    <button class="btn btn-outline-dark" style="float: right; margin: 20px" onclick="window.location='/logout'">Logout</button><br>
+        <!-- Ui cards -->
+        <section id="cards">
+            <div class="container py-2">
+                <div class="row pb-4">
+                    <div class="col-12 text-center">
+                        <div class="display-3">Queues</div>
+                    </div>
+                </div>
+                <!-- cards -->
+                <div class="row">
+                {% csrf_token %}
+                    {% for q in queues %}
+                        <div class="col-lg-4 col-md-6 mb-4 pt-5">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <div class="user-picture">
+                                        <img src="{{ q.img.url }}" class="shadow-sm rounded-circle" height="130" width="130"/>
+                                    </div>
+                                    <div class="user-content">
+                                        <h5 class="text-capitalize user-name">{{ q.name }}</h5>
+                                        <p class=" text-capitalize text-muted small blockquote-footer">{{ q.user.get_full_name }} <br> {{ q.location }}</p>
+
+                                        <p class="small text-muted mb-0">{{ q.details }}</p>
+                                        <button style="float: right" class="btn btn-outline-primary join-button" type="submit" id="join{{ q.pk }}">Join</button>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+            <!-- /cards -->
+        </section>
+        <!-- /Ui cards -->
+    </main>
+
+</div>
+<script>
+{#    window.setTimeout(function () {#}
+{#  window.location.reload();#}
+{#}, 1000);#}
+</script>

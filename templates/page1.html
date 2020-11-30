@@ -1,0 +1,141 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/page1.css' %}">
+    <script src="{% static 'js/page1.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="jquery.smoothscroll.js"></script>
+
+</head>
+
+<body>
+    <div>
+        <div class="scroll-div" style="display:flex;flex-direction: column;justify-content:center;align-items: center;height: 100vh;width: 100vw;background-image: url('{% static "img/bg2.jpg" %}');background-size: 100% auto;">
+            <div class="navigation">
+            <nav class="nav1" id="navbar" style="position:">
+                <ul>
+                    <a href="#"
+                       style="text-decoration: none; color: #ffe; font-size: 30px; font-family: Orbitron; padding-right: 80px">VIRTUAL
+                        QUEUE MANAGER</a>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="firstcontent">
+            <div class="firsttext">
+                <p>RECENT LAUNCH</p>
+                <h1>HOST A QUEUE OR JOIN A QUEUE<br>WITH A CLICK</h1><br>
+                <button class="butt" onclick="window.location='/#bottom-div'"> GO </button>
+            </div>
+
+        </div>
+
+            {#            <h1 style="margin:0;padding: 0;font-size: 50px;">VIRTUAL QUEUE MANAGER</h1>#}
+{#            <div style="width: 80%;"><h3>A virtual queue management system is a system that places customers in a virtual waiting line or queue, where they don’t have to physically wait in line to get a service. With a virtual queue management system, customers can wait remotely as they are not confined to any waiting spot.</h3></div>#}
+{#            <a href="#bottom-div"><button>Let's Go</button></a>#}
+        </div>
+        <div id="bottom-div" class="main scroll-div">
+            <div class="main-container">
+                <div onclick="window.location.href = '/host';" onmouseover="box_1_hover();" onmouseout="box_2_hover()" class="box-1">
+                    <div class="text-container" id="host-text-box">
+                        <h1 class="text">HOST A QUEUE</h1>
+                    </div>
+                </div>
+                <div onmouseover="box_2_hover();" onmouseout="box_2_hover()" class="box-2"></div>
+                <div onclick="window.location.href = '/join';" onmouseover="box_3_hover();" onmouseout="box_2_hover()" class="box-3">
+                    <div class="text-container" id="join-text-box">
+                        <h1 class="text">JOIN A QUEUE</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="lower-container">
+                <div class="host-box image-box" style="background-image: url('{% static "img/doc.jpg" %}');filter: blur(2px);"></div>
+                <div class="join-box image-box" style="background-image: url('{% static "img/back.jpg" %}');filter: blur(2px);"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+    </script>
+    <!-- <script>
+        $(document).ready(function(){
+          // Add smooth scrolling to all links
+          $("a").on('click', function(event) {
+
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+              // Prevent default anchor click behavior
+              event.preventDefault();
+
+              // Store hash
+              var hash = this.hash;
+
+              // Using jQuery's animate() method to add smooth page scroll
+              // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+              $('html, body').animate({
+                scrollTop: $(hash).offset().top
+              }, 800, function(){
+
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+              });
+            } // End if
+          });
+        });
+
+
+
+        </script> -->
+        <script>
+          $('a').smoothscroll({
+            duration:  800
+          });
+
+        </script>
+</body>
+
+
+
+
+</html>
+
+
+{#<!DOCTYPE html>#}
+{#<html>#}
+{##}
+{#<head>#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <link rel="stylesheet" href="{% static 'css/page1.css' %}">#}
+{#    <script src="{% static 'js/page1.js' %}"></script>#}
+{#    <title>Queue Manager</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#    <div class="main">#}
+{#        <div class="main-container">#}
+{#            <div onmouseover="box_1_hover();" onmouseout="box_2_hover()" class="box-1">#}
+{#                <div class="text-container" id="host-text-box">#}
+{#                    <h1 class="text">HOST A QUEUE</h1>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div onmouseover="box_2_hover();" onmouseout="box_2_hover()" class="box-2"></div>#}
+{#            <div onmouseover="box_3_hover();" onmouseout="box_2_hover()" class="box-3">#}
+{#                <div class="text-container" id="join-text-box">#}
+{#                    <h1 class="text">JOIN A QUEUE</h1>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <div class="lower-container">#}
+{#            <div class="host-box image-box" style="background-image: url('{% static "img/doc.gif" %}')"></div>#}
+{#            <div class="join-box image-box" style="background-image:url('{% static "img/queue.jpg" %}');"></div>#}
+{#        </div>#}
+{#    </div>#}
+{#</body>#}
+{##}
+{#</html>#}

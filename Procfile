@@ -1,0 +1,1 @@
+web: gunicorn wdl_project.wsgi

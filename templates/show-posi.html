@@ -1,0 +1,439 @@
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Roboto:100,400");
+
+    *, *::after, *::before {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        height: 100%;
+        min-height: 100%;
+    }
+
+    body {
+        margin: 0;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        font-family: 'Roboto', sans-serif;
+        background: -webkit-gradient(linear, left top, right bottom, from(#c8c897), to(#6590A2));
+        background: linear-gradient(to bottom right, #c8c897, #6590A2);
+    }
+
+    button {
+        z-index: 20;
+        position: absolute;
+        display: block;
+        width: 30%;
+        margin: auto;
+        left: 0;
+        right: 0;
+        bottom: 1.5em;
+        padding: .6em;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1em;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 2em;
+        outline: none;
+        -webkit-transition: .2s background, .4s .3s transform, .4s .3s opacity;
+        transition: .2s background, .4s .3s transform, .4s .3s opacity;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #fff;
+        color: black;
+    }
+
+    .waves {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        -webkit-transition: .4s transform ease;
+        transition: .4s transform ease;
+        -webkit-transform-origin: bottom center;
+        transform-origin: bottom center;
+    }
+
+    .wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-animation: wave 1s linear infinite;
+        animation: wave 1s linear infinite;
+    }
+
+    .wave--front {
+        z-index: 2;
+        color: #32BAFA;
+    }
+
+    .wave--back {
+        z-index: 1;
+        color: #2C7FBE;
+        animation-direction: reverse;
+    }
+
+    .water {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 80%;
+        background: currentColor;
+    }
+
+    .water svg {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        right: 0;
+        bottom: 99.9%;
+    }
+
+    .water:first-of-type {
+        -webkit-transform: translate(-100%, 0);
+        transform: translate(-100%, 0);
+    }
+
+    svg {
+        fill: currentColor;
+    }
+
+    @-webkit-keyframes wave {
+        0% {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+        50% {
+            -webkit-transform: translate3d(50%, 0.5em, 0);
+            transform: translate3d(50%, 0.5em, 0);
+        }
+        100% {
+            -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+        }
+    }
+
+    @keyframes wave {
+        0% {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+        50% {
+            -webkit-transform: translate3d(50%, 0.5em, 0);
+            transform: translate3d(50%, 0.5em, 0);
+        }
+        100% {
+            -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+        }
+    }
+
+    @-webkit-keyframes pulse {
+        0% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+        50% {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+
+    @keyframes pulse {
+        0% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+        50% {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+
+    @-webkit-keyframes pulseAway {
+        0% {
+            opacity: 0;
+            -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+        }
+    }
+
+    @keyframes pulseAway {
+        0% {
+            opacity: 0;
+            -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+        }
+    }
+
+
+    *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+        overflow: hidden;
+        perspective: 2000px;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .container {
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card {
+        width: 300px;
+        min-height: 70vh;
+        background: linear-gradient(45deg, #666, #999);
+        max-width: 25rem;
+        box-shadow: 0 20px 20px rgba(0, 0, 0, .3), 0 0 50px rgba(0, 0, 0, .3);
+        padding: 0 2rem;
+        transform-style: preserve-3d;
+    }
+
+    .top {
+        min-height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .top h2 {
+        max-width: 20rem;
+        z-index: 2;
+    }
+
+    .circle {
+        height: 15rem;
+        width: 15rem;
+        background: linear-gradient(45deg, #444, #222);
+        position: absolute;
+        z-index: 1;
+        border-radius: 50%;
+        opacity: .7;
+    }
+
+    .middle {
+
+    }
+
+    .middle h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .middle p {
+        text-align: center;
+        font-size: 1.3rem;
+        padding: 1rem 0rem;
+        font-weight: lighter;
+    }
+
+    .middle ul {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .middle button {
+        padding: 0.5rem 2rem;
+        background: none;
+        border: none;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+        color: #eee;
+        font-weight: bold;
+    }
+
+
+    button.active {
+        background: #eee;
+        color: #333;
+    }
+
+    .bottom {
+        margin: 3rem auto;
+    }
+
+    .cta {
+        width: 50%;
+        padding: 1rem 0;
+        background: #00bcd4;
+        border: none;
+        font-weight: bolder;
+        cursor: pointer;
+        color: #fff;
+        transition: transform 250ms;
+    }
+
+
+</style>
+<button onclick="window.location='/logout'">Logout</button>
+<div style="z-index: 99; ">
+    <div class="container">
+        <div class="card">
+            <div class="middle" style="margin-top: 10px">
+                <h1>Your position:</h1>
+            </div>
+            <div class="top">
+                <div class="circle"></div>
+                <h2 style="font-size: 10rem;">{{ qp.rank }}</h2>
+            </div>
+            <div class="middle">
+                <p>{{ qp.queue }}</p>
+                <ul>
+                </ul>
+            </div>
+            <div class="bottom">
+                <button class="cta">Opt Out</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="waves">
+    <div class="wave wave--back">
+        <div class="water">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 32" preserveAspectRatio="none"><title>wave2</title>
+                <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"/>
+            </svg>
+        </div>
+        <div class="water">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 32" preserveAspectRatio="none"><title>wave2</title>
+                <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"/>
+            </svg>
+        </div>
+    </div>
+    <div class="wave wave--front">
+        <div class="water">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 32" preserveAspectRatio="none"><title>wave2</title>
+                <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"/>
+            </svg>
+        </div>
+        <div class="water">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 32" preserveAspectRatio="none"><title>wave2</title>
+                <path d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<script>
+    //grab dom elements
+    const card = document.querySelector('.card');
+    const container = document.querySelector('.container');
+    const title = document.querySelector('.middle h1');
+    const eye = document.querySelector('.top h2');
+    const cta = document.querySelector('.cta');
+    const text = document.querySelector('.middle p');
+    const options = document.querySelector('.middle ul');
+    const circle = document.querySelector('.circle');
+
+
+    //capture animation event
+    container.addEventListener('mousemove', (e) => {
+        let xAxis = (window.innerHeight / 2 - e.pageY) / -20;
+        let yAxis = (window.innerWidth / 2 - e.pageX) / -20;
+        card.style.transform = `rotateY(${yAxis}deg) rotateX(${xAxis}deg)`;
+    });
+
+    //set animation start point
+    container.addEventListener('mouseenter', (e) => {
+        card.style.transition = 'none';
+
+        //add perspective to elems
+        title.style.transform = 'translateZ(50px)';
+        text.style.transform = 'translateZ(30px)';
+        options.style.transform = 'translateZ(30px)';
+        cta.style.transform = 'translateZ(50px)';
+        eye.style.transform = 'translateZ(50px)';
+        //circle.style.transform = 'translateZ(10px)';
+    });
+
+    //restore original position
+    container.addEventListener('mouseleave', (e) => {
+        card.style.transition = 'transform 500ms';
+        card.style.transform = 'rotateY(0) rotateX(0)';
+
+        //remove perspective from elems
+        title.style.transform = 'translateZ(0px)';
+        text.style.transform = 'translateZ(0px)';
+        options.style.transform = 'translateZ(0px)';
+        cta.style.transform = 'translateZ(0px)';
+        eye.style.transform = 'translateZ(0px)';
+        circle.style.transform = 'translateZ(0px)';
+    });
+
+    $(document).on('click', '.cta', async (e) => {
+        e.preventDefault();
+        const elememt = $(e.target);
+        let result = await $.ajax({
+            type: 'GET',
+            url: '/host/delete-request',
+            data: {
+                posi_id: {{ qp.id    }},
+            },
+            success: function (data, status, xhttp) {
+                console.log(data);
+                location.reload()
+            }
+        })
+    });
+
+    let number = parseInt('{{ qp.rank }}');
+    number = (10 - number) * 10;
+    lol = `${number}%`;
+    $('.waves').css('height', lol);
+
+    window.setTimeout(function () {
+        window.location.reload();
+    }, 3000);
+
+
+</script>
